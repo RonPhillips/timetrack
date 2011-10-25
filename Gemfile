@@ -9,6 +9,10 @@ gem 'sqlite3'
 
 gem 'json'
 
+gem 'jquery-rails'
+
+gem 'therubyracer'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -17,9 +21,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'therubyracer'
+group :test, :development do
+  gem 'rspec-rails', '~> 2.5'
+end
 
+group :test do
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
