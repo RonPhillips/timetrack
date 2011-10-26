@@ -7,6 +7,8 @@ gem 'rails', '3.1.1'
 
 gem 'sqlite3'
 
+gem 'pg'
+
 gem 'json'
 
 gem 'jquery-rails'
@@ -30,6 +32,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
 end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
