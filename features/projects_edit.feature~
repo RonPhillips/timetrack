@@ -1,0 +1,16 @@
+Feature: Editing Projects
+  In order to update project information
+  As a user
+  I want to be able to do that through an interface
+  
+  Background:
+    Given there is a project called "Original Bogus"
+    And I am on the homepage
+    When I follow "Original Bogus"
+    And I follow "Edit Project"
+  
+  Scenario: Updating a project
+    And I fill in "Name" with "Original Bogus Name"
+    And I press "Update Project"
+    Then I should see "Project has been updated."
+    Then I should be on the project page for "Original Bogus Name"
