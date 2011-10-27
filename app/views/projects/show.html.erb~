@@ -1,0 +1,2 @@
+<% @title = "Bogus Project - Projects - Timetracker" %>
+<h2><%= @project.name %></h2>
