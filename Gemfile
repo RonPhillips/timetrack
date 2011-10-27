@@ -20,6 +20,7 @@ gem 'therubyracer'
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
+  gem 'dynamic_form'
   gem 'uglifier', '>= 1.0.3'
 end
 

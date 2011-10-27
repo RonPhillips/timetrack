@@ -3,7 +3,7 @@ Feature: Creating projects
   As a user
   I want to create them easily
   
-  #Background:
+  Background:
     #Given there are the following users:
       #| email              | password | admin |
       #| admin@timetracker.com | password | true  |
