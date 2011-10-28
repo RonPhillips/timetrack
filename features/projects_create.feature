@@ -8,7 +8,7 @@ Feature: Creating projects
       #| email              | password | admin |
       #| admin@timetracker.com | password | true  |
     #And I am signed in as them
-    Given I am on the homepage
+    Given I am on the projects page
     When I follow "New Project"
 
   Scenario: Creating a project

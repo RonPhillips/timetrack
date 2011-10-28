@@ -14,3 +14,8 @@ Feature: Editing Projects
     And I press "Update Project"
     Then I should see "Project has been updated."
     Then I should be on the project page for "Original Bogus Name"
+    
+  Scenario: Updating a project with invalid attributes is bad
+    And I fill in "Name" with ""
+    And I press "Update Project"
+    Then I should see "Project has not been updated."

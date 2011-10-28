@@ -1,0 +1,7 @@
+Feature: Viewing the dashboard
+  In order to navigate to various models
+  As a user
+  I want to be able to see a list of available models
+  
+  Scenario: Listing all models
+    Given I am on the homepage
