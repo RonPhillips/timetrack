@@ -1,0 +1,24 @@
+Feature: Creating activities
+  In order to have activities to assign timeslices to
+  As a user
+  I want to create them easily
+  
+  Background:
+    #Given there are the following users:
+      #| email              | password | admin |
+      #| admin@timetracker.com | password | true  |
+    #And I am signed in as them
+    Given I am on the activities page
+    When I follow "New Activity"
+
+  Scenario: Creating an activity
+    And I fill in "Name" with "Bogus Activity"
+    And I press "Create Activity"
+    Then I should see "Activity has been created."
+    And I should be on the activitie page for "Bogus Activity"
+    And I should see "Bogus Activity - Activities - Timetracker"
+    
+  Scenario: Creating an activity without a name
+    And I press "Create Activity"
+    Then I should see "Activity has not been created."
+    And I should see "Name can't be blank"

@@ -5,7 +5,7 @@ Feature: Deleting projects
   
   Scenario: Deleting a project
     Given there is a project called "Death March"
-    And I am on the homepage
+    And I am on the projects page
     When I follow "Death March"
     And I follow "Delete Project"
     Then I should see "Project has been deleted."
