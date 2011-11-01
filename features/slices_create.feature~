@@ -1,0 +1,27 @@
+Feature: Creating slices
+  In order to have slices that show how I spent time
+  As a user
+  I want to create them easily
+  
+  Background:
+    #Given there are the following users:
+      #| email              | password | admin |
+      #| admin@timetracker.com | password | true  |
+    #And I am signed in as them
+    Given I am on the slices page
+    When I follow "New Slice"
+
+  Scenario: Creating a slice
+    And I fill in "Recorded On" with "12/04/11"
+    And I fill in "Duration" with "5"
+    And I fill in "Start Quarter" with "32"
+    And I fill in "Note" with "Test Slice creation"
+    And I press "Create Slice"
+    Then I should see "Slice has been created."
+    And I should be on the time slice page for "12/04/11"
+    And I should see "Test Slice creation - Slices - Timetracker"
+    
+  Scenario: Creating a slice without a duration
+    And I press "Create Slice"
+    Then I should see "Slice has not been created."
+    And I should see "Duration can't be blank"

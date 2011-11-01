@@ -13,6 +13,17 @@ module NavigationHelpers
 
     when /the project page for "([^\"]*)"/
       project_path(Project.find_by_name!($1))
+      
+    when /the activity page for "([^\"]*)"/
+      activity_path(Activity.find_by_name!($1))
+      
+    when /the slug page for "([^\"]*)"/
+      slug_path(Slug.find_by_note!($1))
+      
+    when /the stretch page for "([^\"]*)"/
+      stretch_path(Stretch.find_by_note!($1))
+    
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

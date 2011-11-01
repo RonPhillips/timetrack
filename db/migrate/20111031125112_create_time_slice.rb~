@@ -1,0 +1,12 @@
+class CreateTimeSlice < ActiveRecord::Migration
+  def change
+    create_table :time_slices do |t|
+      t.datetime :recorded_on
+      t.integer :duration
+      t.integer :start
+      t.text :note
+
+      t.timestamps
+    end
+  end
+end

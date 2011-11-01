@@ -18,7 +18,7 @@ Feature: Creating projects
     And I should be on the project page for "Bogus Project"
     And I should see "Bogus Project - Projects - Timetracker"
     
-  #Scenario: Creating a project without a name
-    #And I press "Create Project"
-    #Then I should see "Project has not been created."
-    #And I should see "Name can't be blank"
+  Scenario: Creating a project without a name
+    And I press "Create Project"
+    Then I should see "Project has not been created."
+    And I should see "Name can't be blank"

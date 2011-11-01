@@ -1,0 +1,3 @@
+class Slice < ActiveRecord::Base
+  set_tablename_to :slices
+end
