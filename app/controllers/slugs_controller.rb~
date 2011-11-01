@@ -1,0 +1,2 @@
+class SlugsController < ApplicationController
+end

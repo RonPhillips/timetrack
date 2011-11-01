@@ -1,0 +1,7 @@
+<h2>Stretches</h2>
+<ul>
+  <% @stretches.each do |stretch| %>
+    <li><%= link_to stretch.note, stretch %></li>
+  <% end %>
+</ul>
+<%= link_to "New Stretch", new_stretch_path %>

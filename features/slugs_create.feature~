@@ -1,0 +1,27 @@
+Feature: Creating slugs
+  In order to have slugs that show how I spent time
+  As a user
+  I want to create them easily
+  
+  Background:
+    #Given there are the following users:
+      #| email              | password | admin |
+      #| admin@timetracker.com | password | true  |
+    #And I am signed in as them
+    Given I am on the slugs page
+    When I follow "New Slug"
+
+  Scenario: Creating a slug
+    And I fill in "Recorded on" with "12/04/11"
+    And I fill in "Duration" with "5.25"
+    And I fill in "Start quarter" with "32"
+    And I fill in "Note" with "Test Slug creation"
+    And I press "Create Slug"
+    Then I should see "Slug has been created."
+    And I should be on the slug page for "12/04/11"
+    And I should see "Test Slug creation - Slugs - Timetracker"
+    
+  Scenario: Creating a slice without a duration
+    And I press "Create Slug"
+    Then I should see "Slug has not been created."
+    And I should see "Duration can't be blank"

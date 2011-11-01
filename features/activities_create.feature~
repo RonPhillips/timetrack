@@ -15,7 +15,7 @@ Feature: Creating activities
     And I fill in "Name" with "Bogus Activity"
     And I press "Create Activity"
     Then I should see "Activity has been created."
-    And I should be on the activitie page for "Bogus Activity"
+    And I should be on the activity page for "Bogus Activity"
     And I should see "Bogus Activity - Activities - Timetracker"
     
   Scenario: Creating an activity without a name

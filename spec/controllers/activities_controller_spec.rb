@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe ProjectsController do
-  it "displays an error for a missing project" do
+describe ActivitiesController do
+  it "displays an error for a missing activity" do
     get :show, :id => "not-here"
-    response.should redirect_to(projects_path)
-    message = "The project you were looking for could not be found."
+    response.should redirect_to(activities_path)
+    message = "The activity you were looking for could not be found."
     flash[:alert].should eql(message)
   end
 end

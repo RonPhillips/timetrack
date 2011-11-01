@@ -13,3 +13,7 @@ Feature: Viewing the dashboard
   Scenario: I should see a link to the Activities page
     When I follow "Activities"
     Then I should be on the activities page
+    
+  Scenario: I should see a link to the Stretches page
+    When I follow "Stretches"
+    Then I should be on the stretches page
