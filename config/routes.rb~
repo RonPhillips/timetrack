@@ -1,19 +1,20 @@
 Timetracker::Application.routes.draw do
-  get "activities/index"
 
-  get "activities/show"
 
-  get "activities/new"
 
-  get "activities/create"
+  get "stretches/index"
 
-  get "activities/edit"
+  get "stretches/show"
 
-  get "activities/update"
+  get "stretches/new"
 
-  get "activities/delete"
+  get "stretches/create"
 
-  get "dashboard/show"
+  get "stretches/edit"
+
+  get "stretches/update"
+
+  get "stretches/delete"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -30,6 +31,7 @@ Timetracker::Application.routes.draw do
   #   resources :products
   resources :projects
   resources :activities
+  resources :slugs
   # Sample resource route with options:
   #   resources :products do
   #     member do

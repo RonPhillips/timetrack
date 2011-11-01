@@ -1,5 +1,5 @@
 Feature: Creating activities
-  In order to have activities to assign timeslices to
+  In order to have activities to which I can assign timeslices
   As a user
   I want to create them easily
   

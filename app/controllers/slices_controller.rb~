@@ -1,0 +1,32 @@
+class SlicesController < ApplicationController
+  before_filter :find_slice, :only=>[:show, :edit, :update, :destroy]
+  def index
+    @slices = Slice.all
+  end
+  def show
+
+  end
+  def new
+    @slice=Slice.new
+  end
+  def create
+    @slice = Slice.new(params[:slice])
+    if @slice.save
+      flash[:notice] = "Slice has been created."
+      redirect_to @time_slice
+    else
+      flash[:alert] = "Slice has not been created."
+      render :action => 'new'
+    end
+  end
+  
+  private
+  def find_time_slice
+    @slice = Slice.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The slice you were looking" +
+    " for could not be found."
+    redirect_to slices_path
+  end
+
+end

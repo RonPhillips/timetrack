@@ -1,2 +1,4 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<h1>Dashboard</h1>
+<%= link_to "Projects", projects_path %>
+<%= link_to "Activities", activities_path %>
+<%= link_to "Slugs", slugs_path %>

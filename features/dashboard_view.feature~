@@ -3,5 +3,17 @@ Feature: Viewing the dashboard
   As a user
   I want to be able to see a list of available models
   
-  Scenario: Listing all models
+  Background: Listing all models
     Given I am on the homepage
+    
+  Scenario: I should see a link to the Projects page
+    When I follow "Projects"
+    Then I should be on the projects page
+    
+  Scenario: I should see a link to the Activities page
+    When I follow "Activities"
+    Then I should be on the activities page
+    
+  Scenario: I should see a link to the Slugs page
+    When I follow "Slugs"
+    Then I should be on the slugs page

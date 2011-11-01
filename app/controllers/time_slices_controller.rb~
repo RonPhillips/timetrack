@@ -1,0 +1,31 @@
+class TimeSlicesController < ApplicationController
+  before_filter :find_time_slice, :only=>[:show, :edit, :update, :destroy]
+  def index
+    @time_slices = TimeSlice.all
+  end
+  def show
+
+  end
+  def new
+    @project=Project.new
+  end
+  def create
+    @project = Project.new(params[:project])
+    if @project.save
+      flash[:notice] = "Project has been created."
+      redirect_to @project
+    else
+      flash[:alert] = "Project has not been created."
+      render :action => 'new'
+    end
+  end
+  
+  private
+  def find_time_slice
+    @time_slice = TimeSlice.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The time slice you were looking" +
+    " for could not be found."
+    redirect_to time_slices_path
+  end
+end
