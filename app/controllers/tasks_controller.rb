@@ -21,6 +21,26 @@ class TasksController < ApplicationController
     end
   end
   
+  def edit
+  
+  end
+
+  def update
+    if @task.update_attributes(params[:task])
+      flash[:notice] = "Task has been updated."
+      redirect_to [@project, @task]
+    else
+      flash[:alert] = "Task has not been updated."
+      render :action => "edit"
+    end
+  end
+
+  def destroy
+    @task.destroy
+    flash[:notice] = "Task has been deleted."
+    redirect_to @project
+  end
+
   private
   
   def find_project
