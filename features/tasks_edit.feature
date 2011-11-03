@@ -5,7 +5,11 @@ Feature: Editing tasks
 
   Background:
     Given there is a project called "TextMate 2"
-    And that project has a task:
+    Given there are the following users:
+      | email | password |
+      | ronp@bbking.com | password |
+    And I am signed in as them
+    And "ronp@bbking.com" has created a task for this project:
       | title | description |
       | Make it shiny! | Gradients! Starbursts! Oh my! |
     Given I am on the projects page

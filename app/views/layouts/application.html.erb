@@ -19,6 +19,14 @@
   </div>
 <% end %>
 <h1><%= link_to "Timetracker", root_path %></h1>
+<nav>
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Sign in", new_user_session_path %>
+  <% end %>
+</nav>
 <%= yield %>
 
 </body>

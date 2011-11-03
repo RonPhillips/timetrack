@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :find_project
   before_filter :find_task, :only=> [:show, :edit, :update, :destroy]
 
@@ -11,7 +12,7 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = @project.tasks.build(params[:task])
+    @task = @project.tasks.build(params[:task].merge!(:user => current_user))
     if @task.save
       flash[:notice] = "Task has been created."
       redirect_to [@project, @task]

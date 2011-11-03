@@ -5,11 +5,14 @@ Feature: Viewing tasks
   
   Background:
     Given there is a project called "TextMate 2"
-    And that project has a task:
+    Given there are the following users:
+      | email | password |
+      | user@blagger.com | password |
+    And "user@blagger.com" has created a task for this project:
       | title | description |
       | Make it shiny! | Gradients! Starbursts! Oh my! |
     And there is a project called "Internet Explorer"
-    And that project has a task:
+    And "user@blagger.com" has created a task for this project:
       | title | description |
       | Standards compliance | Isn't a joke. |
     And I am on the projects page
