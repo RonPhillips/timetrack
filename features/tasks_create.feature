@@ -8,14 +8,11 @@ Feature: Creating Tasks
     And there are the following users:
       | email | password |
       | user@bogus.com | password |
+    And I am signed in as them
+    And "user@bogus.com" can view the "Project with Tasks" project
     And I am on the projects page
     When I follow "Project with Tasks"
     And I follow "New Task"
-    Then I should see "You need to sign in or sign up before continuing."
-    When I fill in "Email" with "user@bogus.com"
-    And I fill in "Password" with "password"
-    And I press "Sign in"
-    Then I should see "New Task"
   
   Scenario: Creating a task
     When I fill in "Title" with "Complete Filing Documents"

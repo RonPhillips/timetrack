@@ -8,13 +8,6 @@ describe ProjectsController do
   
   context "standard users" do
 
-    #it "cannot access the show action" do
-      #sign_in(:user, user)
-      #get :show, :id => project.id
-      #response.should redirect_to(projects_path)
-      #flash[:alert].should eql("The project you were looking for could not be found.")
-    #end
-
     { "new" => "get",
       "create" => "post",
       "edit" => "get",
@@ -26,6 +19,13 @@ describe ProjectsController do
         response.should redirect_to(root_path)
         flash[:alert].should eql("You must be an admin to do that.")
       end
+    end
+    
+    it "cannot access the show action" do
+      sign_in(:user, user)
+      get :show, :id => project.id
+      response.should redirect_to(projects_path)
+      flash[:alert].should eql("The project you were looking for could not be found.")
     end
   end
 
