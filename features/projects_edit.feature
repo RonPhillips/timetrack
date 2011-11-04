@@ -5,6 +5,10 @@ Feature: Editing Projects
   
   Background:
     Given there is a project called "Original Bogus"
+    Given there are the following users:
+      | email | password | admin |
+      | admin@ticketee.com | password | true |
+    And I am signed in as them
     And I am on the projects page
     When I follow "Original Bogus"
     And I follow "Edit Project"

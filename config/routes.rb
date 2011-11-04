@@ -22,6 +22,11 @@ Timetracker::Application.routes.draw do
   
   resources :activities
   resources :stretches
+  
+  namespace :admin do
+    root :to => "base#index"
+    resources :users
+  end
   # Sample resource route with options:
   #   resources :products do
   #     member do
