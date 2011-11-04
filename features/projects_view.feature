@@ -10,8 +10,10 @@ Feature: Viewing projects
     And I am signed in as them
     And there is a project called "Bogus View"
     And "user@ticketee.com" can view the "Bogus View" project
+    And there is a project called "Big Nuthin'"
   
   Scenario: Listing all projects
     And I am on the projects page
+    Then I should not see "Big Nuthin'"
     When I follow "Bogus View"
     Then I should be on the project page for "Bogus View"

@@ -6,7 +6,11 @@ Feature: Viewing the dashboard
   Background: Listing all models
     Given I am on the homepage
     
-  Scenario: I should see a link to the Projects page
+  Scenario: If I am signed in, then I should see a link to the Projects page
+    Given there are the following users:
+      | email | password |
+      | user@ticketee.com | password |
+    And I am signed in as them
     When I follow "Projects"
     Then I should be on the projects page
     
