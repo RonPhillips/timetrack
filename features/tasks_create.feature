@@ -10,6 +10,7 @@ Feature: Creating Tasks
       | user@bogus.com | password |
     And I am signed in as them
     And "user@bogus.com" can view the "Project with Tasks" project
+    And "user@bogus.com" can create tasks in the "Project with Tasks" project
     And I am on the projects page
     When I follow "Project with Tasks"
     And I follow "New Task"
