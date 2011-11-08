@@ -19,10 +19,16 @@ describe TasksController do
         sign_in(:user, user)
         Permission.create!(:user => user, :permissions_apply => project, :action => "view")
       end
+      
       def cannot_create_tasks!
         response.should redirect_to(project)
         flash[:alert].should eql("You cannot create tasks on this project.")
       end
+      def cannot_update_tasks!
+        response.should redirect_to(project)
+        flash[:alert].should eql("You cannot edit tasks on this project.")
+      end
+      
       it "cannot begin to create a task" do
         get :new, :project_id => project.id
         cannot_create_tasks!
@@ -30,6 +36,19 @@ describe TasksController do
       it "cannot create a task without permission" do
         post :create, :project_id => project.id
         cannot_create_tasks!
+      end
+      
+      it "cannot edit a task without permission" do
+        get :edit, { :project_id => project.id, :id => task.id }
+        cannot_update_tasks!
+      end
+      
+      it "cannot update a task without permission" do
+        put :update, { :project_id => project.id,
+        :id => task.id,
+        :task => {}
+        }
+        cannot_update_tasks!
       end
     end 
     
