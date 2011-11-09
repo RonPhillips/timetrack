@@ -9,6 +9,8 @@ Feature: Deleting tasks
     | email | password |
     | ronp@bbking.com | password |
   And I am signed in as them
+  And "ronp@bbking.com" can view the "TextMate 2" project
+  And "ronp@bbking.com" can delete tasks in the "TextMate 2" project
   And "ronp@bbking.com" has created a task for this project:
     | title | description |
     | Make it shiny! | Gradients! Starbursts! Oh my! |

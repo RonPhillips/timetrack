@@ -8,10 +8,13 @@ Feature: Viewing tasks
     Given there are the following users:
       | email | password |
       | user@blagger.com | password |
+    And I am signed in as them
+    And "user@blagger.com" can view the "TextMate 2" project
     And "user@blagger.com" has created a task for this project:
       | title | description |
       | Make it shiny! | Gradients! Starbursts! Oh my! |
     And there is a project called "Internet Explorer"
+    And "user@blagger.com" can view the "Internet Explorer" project
     And "user@blagger.com" has created a task for this project:
       | title | description |
       | Standards compliance | Isn't a joke. |
