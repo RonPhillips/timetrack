@@ -13,5 +13,11 @@ module ApplicationHelper
     nil
   end
   
+  def authorized?(permission, permissions_apply, &block)
+    block.call if can?(permission.to_sym, permissions_apply) ||
+    current_user.try(:admin?)
+    nil
+  end
+  
 end
 

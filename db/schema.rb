@@ -11,10 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111103175802) do
+ActiveRecord::Schema.define(:version => 20111104152325) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permissions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "permissions_apply_id"
+    t.string   "permissions_apply_type"
+    t.string   "action"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
