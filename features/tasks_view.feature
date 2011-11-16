@@ -8,7 +8,7 @@ Feature: Viewing tasks
     Given there are the following users:
       | email | password |
       | user@blagger.com | password |
-    And I am signed in as them
+    And I sign in as "user@blagger.com"
     And "user@blagger.com" can view the "TextMate 2" project
     And "user@blagger.com" has created a task for this project:
       | title | description |
@@ -21,18 +21,12 @@ Feature: Viewing tasks
     And I am on the projects page
   
   Scenario: Viewing tasks for a given project
-    When I follow "TextMate 2"
-    Then I should see "Make it shiny!"
-    And I should not see "Standards compliance"
-    When I follow "Make it shiny!"
-    Then I should see "Make it shiny"
-    And I should see "Gradients! Starbursts! Oh my!"
-    When I follow "Timetracker"
-    And I follow "Projects"
-    And I follow "Internet Explorer"
-    Then I should see "Standards compliance"
-    And I should not see "Make it shiny!"
-    When I follow "Standards compliance"
-    Then I should see "Standards compliance"
-    And I should see "Isn't a joke."
+    When I navigate to the "TextMate 2" project page
+    Then I should see the "Make it shiny!" task in the "#tasks" ID
+    And I should not see the "Standards compliance" task title
+    When I am on the homepage
+    And I navigate to the "Internet Explorer" project page
+    Then I should see the "Standards compliance" task in the "#tasks" ID
+    And I should not see the "Make it shiny!" task title
+  
 

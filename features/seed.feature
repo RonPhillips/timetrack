@@ -5,6 +5,6 @@ Feature: Seed Data
 
   Scenario: The basics
     Given I have run the seed task
-    And I am signed in as "admin@timetrack.com"
-    And I follow "Projects"
-    Then I should see "Timetrack Seed Project"
+    And I sign in as "admin@timetrack.com"
+    And I am on the projects page
+    Then I should see the "Timetrack Seed Project" link

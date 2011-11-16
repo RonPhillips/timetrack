@@ -7,18 +7,18 @@ Feature: Creating projects
     Given there are the following users:
       | email              | password | admin |
       | admin@timetracker.com | password | true  |
-    And I am signed in as them
-    Given I am on the projects page
-    When I follow "New Project"
-
+    And I sign in as "admin@timetracker.com"
+    And I am on the projects page
+    When I navigate to the new project creation page
+  
   Scenario: Creating a project
-    And I fill in "Name" with "Bogus Project"
-    And I press "Create Project"
-    Then I should see "Project has been created."
-    And I should be on the project page for "Bogus Project"
-    And I should see "Bogus Project - Projects - Timetracker"
+    And I create a new project
+    Then I should be shown the project created verification
+    And I should be on the project page for the new project
     
   Scenario: Creating a project without a name
-    And I press "Create Project"
-    Then I should see "Project has not been created."
-    And I should see "Name can't be blank"
+    And I create a new project without a name
+    Then I should see the project creation denied alert
+    And I should see the project name presence validation alert
+    
+

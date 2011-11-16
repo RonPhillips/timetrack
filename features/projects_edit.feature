@@ -7,19 +7,18 @@ Feature: Editing Projects
     Given there is a project called "Original Bogus"
     Given there are the following users:
       | email | password | admin |
-      | admin@ticketee.com | password | true |
-    And I am signed in as them
+      | admin@timetracker.com | password | true |
+    And I sign in as "admin@timetracker.com"
     And I am on the projects page
-    When I follow "Original Bogus"
-    And I follow "Edit Project"
+    When I navigate to the "Original Bogus" project edit page
   
   Scenario: Updating a project
-    And I fill in "Name" with "Original Bogus Name"
-    And I press "Update Project"
-    Then I should see "Project has been updated."
-    Then I should be on the project page for "Original Bogus Name"
-    
+    And I change the name of the project to "Original Bogus Name Test"
+    Then I should be shown the project updated verification
+    And I should be on the project page for "Original Bogus Name Test"
+
   Scenario: Updating a project with invalid attributes is bad
-    And I fill in "Name" with ""
-    And I press "Update Project"
-    Then I should see "Project has not been updated."
+    And I change the name of the project to ""
+    Then I should see the project update denied alert
+    And I should see the project name presence validation alert
+

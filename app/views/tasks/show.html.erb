@@ -12,4 +12,13 @@
 
   <br><small>Created by <%= @task.user.email %></small>
   <%= simple_format(@task.description) %>
+  <h3>Comments</h3>
+  <div id='comments'>
+    <% if @task.comments.exists? %> <co id='ch10_191_1' />
+      <%= render @task.comments.select(&:persisted?) %>
+    <% else %>
+      There are no comments for this ticket.
+    <% end %>
+  </div>
+  <%= render "comments/form" %>
 </div>

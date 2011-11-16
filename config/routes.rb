@@ -20,6 +20,10 @@ Timetracker::Application.routes.draw do
     resources :tasks
   end
   
+  resources :tasks do
+    resources :comments
+  end
+   
   resources :activities
   resources :stretches
   

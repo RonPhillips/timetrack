@@ -6,16 +6,16 @@ Feature: Editing Stretches
   Background:
     Given there is a stretch noted "Blarting"
     And I am on the stretches page
-    When I follow "Blarting"
-    And I follow "Edit Stretch"
+    When I navigate to the stretch page with note "Blarting"
+    And I choose to edit the stretch
   
   Scenario: Updating a stretch
-    And I fill in "Note" with "Yawping and Blarting"
-    And I press "Update Stretch"
-    Then I should see "Stretch has been updated."
-    Then I should be on the stretch page for "Yawping and Blarting"
+    And I change the stretch note to "Yawping and Blarting"
+    Then I should be shown the "stretch updated" verification
+    Then I should be on the stretch page with note "Yawping and Blarting"
     
   Scenario: Updating a stretch with invalid attributes is bad
-    And I fill in "Duration" with ""
-    And I press "Update Stretch"
-    Then I should see "Stretch has not been updated."
+    And I change the stretch duration to ""
+    Then I should be shown the "stretch not updated" verification
+    Then I should see the stretch "duration cannot be blank" validation alert
+

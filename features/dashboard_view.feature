@@ -10,14 +10,11 @@ Feature: Viewing the dashboard
     Given there are the following users:
       | email | password |
       | user@ticketee.com | password |
-    And I am signed in as them
-    When I follow "Projects"
-    Then I should be on the projects page
+    And I sign in as "user@ticketee.com"
+    Then I should see the "Projects" link
     
   Scenario: I should see a link to the Activities page
-    When I follow "Activities"
-    Then I should be on the activities page
+    Then I should see the "Activities" link
     
   Scenario: I should see a link to the Stretches page
-    When I follow "Stretches"
-    Then I should be on the stretches page
+    Then I should see the "Stretches" link

@@ -6,16 +6,15 @@ Feature: Editing Activities
   Background:
     Given there is an activity called "Blarting"
     And I am on the activities page
-    When I follow "Blarting"
-    And I follow "Edit Activity"
+    When I navigate to the "Blarting" activity edit page
   
   Scenario: Updating an activity
-    And I fill in "Name" with "Yawping and Blarting"
-    And I press "Update Activity"
-    Then I should see "Activity has been updated."
-    Then I should be on the activity page for "Yawping and Blarting"
+    And I change the name of the activity to "Yawping and Blarting"
+    Then I should be shown the activity updated verification
+    And I should be on the activity page for "Yawping and Blarting"
     
-  Scenario: Updating a activity with invalid attributes is bad
-    And I fill in "Name" with ""
-    And I press "Update Activity"
-    Then I should see "Activity has not been updated."
+  Scenario: Updating an activity with invalid attributes is bad
+    And I change the name of the activity to ""
+    Then I should see the activity update denied alert
+    And I should see the activity name presence validation alert
+
