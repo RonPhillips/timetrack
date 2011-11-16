@@ -1,35 +1,29 @@
 Feature: Creating Users
   In order to add new users to the system
   As an admin
-  I want to be able to add them through the backe
+  I want to be able to add them through the admin UI
   
   Background:
     Given there are the following users:
       | email | password | admin |
       | admin@ticketee.com | password | true |
-    And I am signed in as them
+    And I sign in as "admin@ticketee.com"
     Given I am on the homepage
-    When I follow "Admin"
-    And I follow "Users"
-    When I follow "New User"
+    When I navigate to the admin subsite
+    And I navigate to the admin/users page
+    And I choose to create a user
   
   Scenario: Creating a new user
-    And I fill in "Email" with "newbie@ticketee.com"
-    And I fill in "Password" with "password"
-    And I press "Create User"
-    Then I should see "User has been created."
+    And I create a user 
+    Then I should be shown the "user created" verification
+    And I should see the new user
   
   Scenario: Leaving email blank results in an error
-    When I fill in "Email" with ""
-    And I fill in "Password" with "password"
-    And I press "Create User"
-    Then I should see "User has not been created."
-    And I should see "Email can't be blank"
+    When I create a user with a blank email
+    Then I should be shown the "user not created" verification
+    And I should see the "user title presence" validation alert
     
   Scenario: Creating an admin user
-    When I fill in "Email" with "newadmin@ticketee.com"
-    And I fill in "Password" with "password"
-    And I check "Is an admin?"
-    And I press "Create User"
-    Then I should see "User has been created"
-    And I should see "newadmin@ticketee.com (Admin)"
+    And I create an admin user
+    Then I should see the new user labeled as admin
+

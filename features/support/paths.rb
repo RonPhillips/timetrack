@@ -23,7 +23,16 @@ module NavigationHelpers
       
     when /the stretch page for "([^\"]*)"/
       stretch_path(Stretch.find_by_note!($1))
-    
+
+    when /the activities page/
+      activities_path
+
+    when /the projects page/
+      projects_path
+
+    when /the stretches page/
+      stretches_path
+      
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

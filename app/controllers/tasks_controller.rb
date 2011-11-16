@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   before_filter :authorize_delete!, :only => [:destroy]
   
   def show
-  
+    @comment = @task.comments.build
   end
   
   def new

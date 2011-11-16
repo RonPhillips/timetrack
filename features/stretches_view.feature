@@ -6,5 +6,5 @@ Feature: Viewing Stretches
   Scenario: Listing all stretches
     Given there is a stretch noted "Yawping"
     And I am on the stretches page
-    When I follow "Yawping"
-    Then I should be on the stretch page for "Yawping"
+    When I navigate to the stretch page with note "Yawping"
+    Then I should be on the stretch page with note "Yawping"

@@ -4,21 +4,16 @@ Feature: Creating activities
   I want to create them easily
   
   Background:
-    #Given there are the following users:
-      #| email              | password | admin |
-      #| admin@timetracker.com | password | true  |
-    #And I am signed in as them
     Given I am on the activities page
-    When I follow "New Activity"
+    When I navigate to the new activity creation page
 
   Scenario: Creating an activity
-    And I fill in "Name" with "Bogus Activity"
-    And I press "Create Activity"
-    Then I should see "Activity has been created."
-    And I should be on the activity page for "Bogus Activity"
-    And I should see "Bogus Activity - Activities - Timetracker"
+    And I create a new activity
+    Then I should be shown the activity created verification
+    And I should be on the activity page for the new activity
     
   Scenario: Creating an activity without a name
-    And I press "Create Activity"
-    Then I should see "Activity has not been created."
-    And I should see "Name can't be blank"
+    And I create a new activity without a name
+    Then I should see the activity creation denied alert
+    And I should see the activity name presence validation alert
+

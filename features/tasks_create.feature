@@ -8,29 +8,27 @@ Feature: Creating Tasks
     And there are the following users:
       | email | password |
       | user@bogus.com | password |
-    And I am signed in as them
+    And I sign in as "user@bogus.com"
     And "user@bogus.com" can view the "Project with Tasks" project
     And "user@bogus.com" can create tasks in the "Project with Tasks" project
     And I am on the projects page
-    When I follow "Project with Tasks"
-    And I follow "New Task"
-  
+    When I navigate to the "Project with Tasks" project page
+    And I start to create a new task
+
   Scenario: Creating a task
-    When I fill in "Title" with "Complete Filing Documents"
-    And I fill in "Description" with "Fill out all the documents required for a filing"
-    And I press "Create Task"
-    Then I should see "Task has been created."
-    And I should see "Created by user@bogus.com"
+    And I enter the new task information
+    Then I should be shown the task "created" verification
+    And I should see the new task created by "user@bogus.com"
   
   Scenario: Creating a task without valid attributes fails
-    When I press "Create Task"
-    Then I should see "Task has not been created."
-    And I should see "Title can't be blank"
-    And I should see "Description can't be blank"
+    And I create a new task without a name or description
+    Then I should see the task not "created" alert
+    And I should see the task title presence validation alert
+    And I should see the task description presence validation alert
     
   Scenario: Description must be longer than 10 characters
-    When I fill in "Title" with "Complete Filing Documents"
-    And I fill in "Description" with "Go on!"
-    And I press "Create Task"
-    Then I should see "Task has not been created."
-    And I should see "Description is too short"
+    And I create a new task with a description shorter than 10 characters
+    Then I should see the task not "created" alert
+    And I should see the task description length validation alert
+
+

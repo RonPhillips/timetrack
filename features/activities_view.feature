@@ -6,5 +6,5 @@ Feature: Viewing Activities
   Scenario: Listing all activities
     Given there is an activity called "Yawping"
     And I am on the activities page
-    When I follow "Yawping"
+    When I navigate to the "Yawping" activity page
     Then I should be on the activity page for "Yawping"

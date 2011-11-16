@@ -8,25 +8,25 @@ Feature: Editing tasks
     Given there are the following users:
       | email | password |
       | ronp@bbking.com | password |
-    And I am signed in as them
+    And I sign in as "ronp@bbking.com"
     And "ronp@bbking.com" can view the "TextMate 2" project
     And "ronp@bbking.com" can edit tasks in the "TextMate 2" project
     And "ronp@bbking.com" has created a task for this project:
       | title | description |
       | Make it shiny! | Gradients! Starbursts! Oh my! |
     Given I am on the projects page
-    When I follow "TextMate 2"
-    And I follow "Make it shiny!"
-    When I follow "Edit Task"
+    When I navigate to the "TextMate 2" project page
+    And I navigate to the "Make it shiny!" task page
+    And I choose to edit the task
       
   Scenario: Updating a task
-    When I fill in "Title" with "Make it really shiny!"
-    And I press "Update Task"
-    Then I should see "Task has been updated."
-    And I should see "Make it really shiny!"
-    But I should not see "Make it shiny!"
+    And I change the title of the task to "Original Bogus Name Test"
+    Then I should be shown the task "updated" verification
+    And I should be on the "Original Bogus Name Test" task page
+    And I should not see the "Make it shiny!" task title
 
   Scenario: Updating a task with invalid information
-    When I fill in "Title" with ""
-    And I press "Update Task"
-    Then I should see "Task has not been updated." 
+    When I change the title of the task to ""
+    Then I should see the task not "updated" alert
+
+
