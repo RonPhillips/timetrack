@@ -15,17 +15,14 @@ Feature: Creating comments
       | Change a task's state | You should be able to create a comment |
     And I navigate to the "Taskee" project page
 
-
   Scenario: Creating a comment
-    #Then show me the page
     When I navigate to the "Change a task's state" task page
-#    And I fill in "Text" with "Added a comment!"
-#    And I press "Create Comment"
-#    Then I should see "Comment has been created."
-#    Then "Added a comment!" should appear in the "comments" section
+    And I create the comment "Added a comment!"
+    Then I should be shown the comment "created" verification
+    And I should see the "Added a comment!" comment in the "#comments" ID
 
-#  Scenario: Creating an invalid comment
-#    When I follow "Change a task's state"
-#    And I press "Create Comment"
-#    Then I should see "Comment has not been created."
-#    And I should see "Text can't be blank"
+  Scenario: Creating an invalid comment
+    When I navigate to the "Change a task's state" task page
+    And I create the comment ""
+    Then I should be shown the comment "not created" verification
+    And I should see the comment text presence validation alert
