@@ -1,9 +1,3 @@
-
-#    And I follow "States"
-#    And I follow "New State"
-#    And I fill in "Name" with "Duplicate"
-#    And I press "Create State"
-#    Then I should see "State has been created."
 When /^I navigate to the admin\/states page$/ do
   visit(admin_states_path)
 end
@@ -19,8 +13,15 @@ end
 
 Then /^I should be shown the state "([^"]*)" verification$/ do |operation|
   responses={'created'=>"State has been created.",
-  'not created'=>"State has not been created."
+  'not created'=>"State has not been created.",
+  'new is default'=>"New is now the default state."
   }
   page.should have_content(responses[operation])
 end
+
+When /^I follow "([^"]*)" for the "([^"]*)" state$/ do |link, name|
+  state = State.find_by_name!(name)
+  steps(%Q{When I follow "#{link}" under "#state_#{state.id}" CSS path})
+end
+
 

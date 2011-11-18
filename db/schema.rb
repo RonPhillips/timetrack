@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111118120901) do
+ActiveRecord::Schema.define(:version => 20111118192347) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(:version => 20111118120901) do
   end
 
   create_table "states", :force => true do |t|
-    t.string "name"
-    t.string "color"
-    t.string "background"
+    t.string  "name"
+    t.string  "color"
+    t.string  "background"
+    t.boolean "default",    :default => false
   end
 
   create_table "stretches", :force => true do |t|
