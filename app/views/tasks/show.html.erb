@@ -11,6 +11,7 @@
   <% end %>
 
   <br><small>Created by <%= @task.user.email %></small>
+  <%= render @task.state if @task.state %>
   <%= simple_format(@task.description) %>
   <h3>Comments</h3>
   <div id='comments'>
