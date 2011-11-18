@@ -36,6 +36,5 @@ Feature: Creating comments
     And I set the state to "Open"
     And I save the comment
     Then I should be shown the comment "created" verification
-    Then show me the page
     And I should see "Open" under the "#task .state" CSS path
     And I should see "State: Open" under the "#comments" CSS path

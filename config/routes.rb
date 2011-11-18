@@ -31,7 +31,8 @@ Timetracker::Application.routes.draw do
     root :to => "base#index"
     resources :users do
       resources :permissions
-    end    
+    end
+    resources :states    
   end
   
   put '/admin/users/:user_id/permissions', :to => 'admin/permissions#update',
