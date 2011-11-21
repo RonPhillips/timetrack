@@ -21,6 +21,10 @@ When /^I set the state to "([^"]*)"$/ do |state|
   select(state, :from => 'State')
 end
 
+When /^I set the comment "Tags" to "([^"]*)"$/ do |tags|
+  fill_in('Tags', :with => tags)
+end
+
 When /^I save the comment/ do 
   click_on('Create Comment')
 end

@@ -8,9 +8,6 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </p>
-  <p>
-    <%= label_tag :tags %>
-    <%= text_field_tag :tags, params[:tags] %>
-  </p>
+  <%= render 'tags/form' %>
   <%= f.submit %>
 <% end %>

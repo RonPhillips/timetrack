@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     end
     @comment = @task.comments.build(params[:comment].merge(:user => current_user))
     if @comment.save
+      @task.tag!(params[:tags])
       flash[:notice] = "Comment has been created."
       redirect_to [@task.project, @task]
     else
