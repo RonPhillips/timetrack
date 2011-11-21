@@ -4,7 +4,8 @@ module Admin::PermissionsHelper
     "view" => "View",
     "create tasks" => "Create Tasks",
     "edit tasks" => "Edit Tasks",
-    "delete tasks" => "Delete Tasks"
+    "delete tasks" => "Delete Tasks",
+    "change states" => "Change States"
     }
   end
 end

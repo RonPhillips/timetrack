@@ -3,11 +3,15 @@ class CommentsController < ApplicationController
   before_filter :find_task
 
   def create
+    if cannot?(:"change states", @task.project)
+      params[:comment].delete(:state_id)
+    end
     @comment = @task.comments.build(params[:comment].merge(:user => current_user))
     if @comment.save
       flash[:notice] = "Comment has been created."
       redirect_to [@task.project, @task]
-      else
+    else
+      @states = State.all
       flash[:alert] = "Comment has not been created."
       render :template => "tasks/show"
     end
@@ -20,3 +24,5 @@ class CommentsController < ApplicationController
   end
 
 end
+
+

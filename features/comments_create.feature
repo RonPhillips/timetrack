@@ -14,18 +14,32 @@ Feature: Creating comments
       | title | description |
       | Change a task's state | You should be able to create a comment |
     And I navigate to the "Taskee" project page
-
-
+    Given there is a state called "Open"
+        
   Scenario: Creating a comment
-    #Then show me the page
     When I navigate to the "Change a task's state" task page
-#    And I fill in "Text" with "Added a comment!"
-#    And I press "Create Comment"
-#    Then I should see "Comment has been created."
-#    Then "Added a comment!" should appear in the "comments" section
+    And I comment "Added a comment!"
+    And I save the comment
+    Then I should be shown the comment "created" verification
+    And I should see "Added a comment!" under the "#comments" CSS path
 
-#  Scenario: Creating an invalid comment
-#    When I follow "Change a task's state"
-#    And I press "Create Comment"
-#    Then I should see "Comment has not been created."
-#    And I should see "Text can't be blank"
+  Scenario: Creating an invalid comment
+    When I navigate to the "Change a task's state" task page
+    And I comment ""
+    And I save the comment
+    Then I should be shown the comment "not created" verification
+    And I should see the comment text presence validation alert
+    
+  Scenario: Changing a task's state
+    Given "user@taskee.com" can change states on the "Taskee" project
+    When I navigate to the "Change a task's state" task page
+    And I comment "This is a real issue"
+    And I set the state to "Open"
+    And I save the comment
+    Then I should be shown the comment "created" verification
+    And I should see "Open" under the "#task .state" CSS path
+    And I should see "State: Open" under the "#comments" CSS path
+    
+  Scenario: A user without permission cannot change the state
+    When I navigate to the "Change a task's state" task page
+    Then I should not see the "#comment_state_id" element
