@@ -14,7 +14,15 @@ When /^I enter the new task information$/ do
   fill_in('Description', :with =>'Default Task Description')
   click_on('Create Task')
 end
-    
+
+When /^I set the task "([^"]*)" to "([^"]*)"$/ do |attr_label, value|
+  fill_in(attr_label, :with=>value)
+end   
+
+When /^I save the new task$/ do
+  click_on('Create Task')
+end
+   
 When /^I navigate to the "([^"]*)" task page$/ do |task_title|
   task = Task.find_by_title!(task_title)
   visit(project_task_path(task.project_id, task.id))

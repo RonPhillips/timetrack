@@ -18,6 +18,7 @@ class TasksController < ApplicationController
   def create
     @task = @project.tasks.build(params[:task].merge!(:user => current_user))
     if @task.save
+      @task.tag!(params[:tags])
       flash[:notice] = "Task has been created."
       redirect_to [@project, @task]
     else
