@@ -11,6 +11,7 @@ Feature: Creating Tasks
     And I sign in as "user@bogus.com"
     And "user@bogus.com" can view the "Project with Tasks" project
     And "user@bogus.com" can create tasks in the "Project with Tasks" project
+    And "user@bogus.com" can tag the "Project with Tasks" project
     And I am on the projects page
     When I navigate to the "Project with Tasks" project page
     And I start to create a new task

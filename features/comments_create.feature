@@ -15,6 +15,7 @@ Feature: Creating comments
       | Change a task's state | You should be able to create a comment |
     And I navigate to the "Taskee" project page
     Given there is a state called "Open"
+    And "user@taskee.com" can tag the "Taskee" project
         
   Scenario: Creating a comment
     When I navigate to the "Change a task's state" task page

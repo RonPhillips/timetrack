@@ -15,6 +15,7 @@ describe CommentsController do
     before do
       sign_in(:user, user)
     end
+    
     it "cannot transition a state by passing through state_id" do
       post :create, { :tags=>'',:comment => { :text => "Hacked!",
       :state_id => state.id },
@@ -22,9 +23,14 @@ describe CommentsController do
       task.reload
       task.state.should eql(nil)
     end
-  end
-
-  
+    
+    it "cannot tag a task without permission" do
+      post :create, { :tags => "one two", :comment => { :text => "Tag!" },
+              :task_id => task.id }
+      task.reload
+      task.tags.should be_empty
+    end
+  end  
 end
 
 
