@@ -18,7 +18,7 @@
     <% if @task.comments.exists? %> <co id='ch10_191_1' />
       <%= render @task.comments.select(&:persisted?) %>
     <% else %>
-      There are no comments for this ticket.
+      There are no comments for this task.
     <% end %>
   </div>
   <%= render "comments/form" %>
