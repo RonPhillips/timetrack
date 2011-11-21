@@ -8,6 +8,7 @@ class TasksController < ApplicationController
   
   def show
     @comment = @task.comments.build
+    @states = State.all
   end
   
   def new

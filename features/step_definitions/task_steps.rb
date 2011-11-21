@@ -82,4 +82,9 @@ Then /^I should see the task description length validation alert$/ do
   page.should have_content("Description is too short")
 end
 
+Then /^the "([^"]*)" task is in the "([^"]*)" state$/ do |task_title, state_name|
+  task = Task.find_by_title(task_title)
+  task.state = State.find_by_name(state_name)
+  task.save!
+end
 

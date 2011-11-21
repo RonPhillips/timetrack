@@ -18,6 +18,9 @@ Feature: Assigning permissions
     When I navigate to the admin subsite
     And I navigate to the "user@taskee.com" user page
     And I choose to edit permissions
+    And there is a state called "Open"
+    And there is a state called "New"
+    And the "Shiny!" task is in the "New" state
 
   Scenario: Viewing a project
     When I grant "View" permission on "TextMate 2"
@@ -39,7 +42,6 @@ Feature: Assigning permissions
     And I enter the new task information
     Then I should be shown the task "created" verification
     And I should see the new task created by "user@taskee.com"
-
     
   Scenario: Updating a task for a project
     When I grant "View" permission on "TextMate 2"
@@ -55,7 +57,6 @@ Feature: Assigning permissions
     Then I should be shown the task "updated" verification
     And I should be on the "Original Bogus Name Test" task page
 
-
   Scenario: Deleting a task for a project
     When I grant "View" permission on "TextMate 2"
     And I grant "Delete tasks" permission on "TextMate 2"
@@ -66,3 +67,18 @@ Feature: Assigning permissions
     And I navigate to the "Shiny!" task page
     And I choose to delete the task
     Then I should be shown the task "deleted" verification
+    
+  Scenario: Changing states for a task
+    When I grant "View" permission on "TextMate 2"
+    And I grant "Change States" permission on "TextMate 2"
+    And I commit my permissions changes
+    And I sign out
+    Given I sign in as "user@taskee.com"
+    And I am on the projects page
+    And I navigate to the "Shiny!" task page
+    And I comment "Added a comment!"
+    And I set the state to "Open"
+    And I save the comment
+    Then I should be shown the comment "created" verification
+    And I should see "Added a comment!" under the "#comments" CSS path
+    And I should see "Open" under the "#task .state" CSS path
