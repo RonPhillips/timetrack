@@ -35,6 +35,12 @@ Then /^I should see "([^"]*)" under the "([^"]*)" CSS path/ do |content, css_id|
   end
 end
 
+Then /^I should not see "([^"]*)" under the "([^"]*)" CSS path/ do |content, css_id|
+  within(css_id) do
+    page.should have_no_content(content)
+  end
+end
+
 When /^I follow "([^"]*)" under "([^"]*)" CSS path$/ do |link_text, css_id|
   within(css_id) do
     click_on(link_text)
@@ -43,7 +49,7 @@ end
 
 Then /^I should not see the "([^"]*)" element$/ do |css|
   page.should_not(have_css(css),
-"Expected to not see the #{css} element, but did.")
+        "Expected to not see the #{css} element, but did.")
 end
 #Given /^(?:|I )am on (.+)$/ do |page_name|
 #  visit path_to(page_name)

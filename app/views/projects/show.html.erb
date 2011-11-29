@@ -11,10 +11,22 @@
   <%= link_to "New Task", new_project_task_path(@project) %>
 <% end %>
 
+<%= search_form_for @q, :url=>search_project_tasks_path(@project) do |f| %>
+  <%= f.label :title_cont %>
+  <%= f.text_field :title_cont %>
+  <%= f.label :tags_name_cont %>
+  <%= f.text_field :tags_name_cont %>
+  <%= f.label :state_name_cont %>
+  <%= f.text_field :state_name_cont %>
+  
+  <%= f.submit %>
+<% end %>
+
 <ul id='tasks'>
-  <% @project.tasks.each do |task| %>
+  <% @tasks.each do |task| %>
     <li>
-      #<%= task.id %> - <%= link_to task.title, [@project, task] %>
+      #<%= task.id %> - <%= link_to task.title, [@project, task] %><%= task.tagstring %>
     </li>
   <% end %>
 </ul>
+
