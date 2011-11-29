@@ -34,7 +34,7 @@ Timetracker::Application.routes.draw do
   end
    
   resources :activities
-  resources :stretches
+  resources :journal_entries
   
   namespace :admin do
     root :to => "base#index"
