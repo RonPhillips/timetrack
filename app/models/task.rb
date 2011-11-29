@@ -14,4 +14,8 @@ class Task < ActiveRecord::Base
     self.tags << tags
   end
   
+  def tagstring
+    out = tags.map{|tag|tag.name}
+  end
+  
 end

@@ -17,7 +17,11 @@ Timetracker::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      collection do
+        get :search
+      end
+    end
   end
   
   resources :tasks do
