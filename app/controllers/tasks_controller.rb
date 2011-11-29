@@ -6,6 +6,18 @@ class TasksController < ApplicationController
   before_filter :authorize_update!, :only => [:edit, :update]
   before_filter :authorize_delete!, :only => [:destroy]
   
+#  def index
+#    @q = Task.search(params[:q])
+#    @tasks = @q.result()
+#    render @project
+#  end
+  
+  def search
+    @q = Task.search(params[:q])
+    @tasks = @q.result()
+    render 'projects/show'
+  end
+  
   def show
     @comment = @task.comments.build
     @states = State.all
@@ -18,6 +30,9 @@ class TasksController < ApplicationController
   def create
     @task = @project.tasks.build(params[:task].merge!(:user => current_user))
     if @task.save
+      if can?(:tag, @project) || current_user.admin?
+        @task.tag!(params[:tags])
+      end
       flash[:notice] = "Task has been created."
       redirect_to [@project, @task]
     else

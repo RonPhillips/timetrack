@@ -1,0 +1,7 @@
+<h2>Journal Entries</h2>
+<ul>
+  <% @journal_entries.each do |journal_entry| %>
+    <li><%= link_to journal_entry.note, journal_entry %></li>
+  <% end %>
+</ul>
+<%= link_to "New Journal Entry", new_journal_entry_path %>

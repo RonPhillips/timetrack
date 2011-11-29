@@ -1,7 +1,11 @@
 Given /^"([^\"]*)" has created a task for this project:$/ do |email, table|
   table.hashes.each do |attributes|
-    attributes = attributes.merge!(:user => User.find_by_email!(email))
-    @project.tasks.create!(attributes)
+    tags = attributes.delete("tags")
+    state = attributes.delete("state")
+    task = @project.tasks.create!(attributes.merge!(:user => User.find_by_email!(email)))
+    task.state = State.find_or_create_by_name(state) if state
+    task.tag!(tags) if tags
+    task.save
   end
 end
 
@@ -14,7 +18,15 @@ When /^I enter the new task information$/ do
   fill_in('Description', :with =>'Default Task Description')
   click_on('Create Task')
 end
-    
+
+When /^I set the task "([^"]*)" to "([^"]*)"$/ do |attr_label, value|
+  fill_in(attr_label, :with=>value)
+end   
+
+When /^I save the new task$/ do
+  click_on('Create Task')
+end
+   
 When /^I navigate to the "([^"]*)" task page$/ do |task_title|
   task = Task.find_by_title!(task_title)
   visit(project_task_path(task.project_id, task.id))

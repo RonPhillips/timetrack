@@ -15,6 +15,7 @@ Feature: Creating comments
       | Change a task's state | You should be able to create a comment |
     And I navigate to the "Taskee" project page
     Given there is a state called "Open"
+    And "user@taskee.com" can tag the "Taskee" project
         
   Scenario: Creating a comment
     When I navigate to the "Change a task's state" task page
@@ -43,3 +44,13 @@ Feature: Creating comments
   Scenario: A user without permission cannot change the state
     When I navigate to the "Change a task's state" task page
     Then I should not see the "#comment_state_id" element
+    
+  Scenario: Adding a tag to a task
+    When I navigate to the "Change a task's state" task page
+    Then I should not see "bug" under the "#task #tags" CSS path
+    And I comment "Adding the bug tag"
+    And I set the comment "Tags" to "bug"
+    And I save the comment
+    #Then show me the page
+    Then I should be shown the comment "created" verification
+    And I should see "bug" under the "#task #tags" CSS path

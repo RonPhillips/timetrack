@@ -57,6 +57,16 @@ describe TasksController do
         flash[:alert].should eql("You cannot delete tasks from this project.")
       end
       
+      it "can create tasks, but not tag them" do
+        Permission.create(:user => user, :permissions_apply => project, :action => "create tasks")
+        post :create, :task => { :title => "New task!",
+              :description => "Brand spankin' new" },
+              :project_id => project.id,
+              :tags => "these are tags"
+        Task.last.tags.should be_empty
+      end
+
+      
     end 
     
   end

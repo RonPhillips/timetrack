@@ -17,15 +17,24 @@ Timetracker::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      collection do
+        get :search
+      end
+    end
   end
   
   resources :tasks do
     resources :comments
+    resources :tags do
+      member do
+        delete :remove
+      end
+    end
   end
    
   resources :activities
-  resources :stretches
+  resources :journal_entries
   
   namespace :admin do
     root :to => "base#index"

@@ -16,5 +16,5 @@ Feature: Viewing the dashboard
   Scenario: I should see a link to the Activities page
     Then I should see the "Activities" link
     
-  Scenario: I should see a link to the Stretches page
-    Then I should see the "Stretches" link
+  Scenario: I should see a link to the journal entries page
+    Then I should see the "Journal Entries" link

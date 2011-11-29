@@ -13,6 +13,7 @@
   <br><small>Created by <%= @task.user.email %></small>
   <%= render @task.state if @task.state %>
   <%= simple_format(@task.description) %>
+  <div id='tags'><%= render @task.tags %></div>
   <h3>Comments</h3>
   <div id='comments'>
     <% if @task.comments.exists? %> <co id='ch10_191_1' />

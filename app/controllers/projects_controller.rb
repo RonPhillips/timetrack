@@ -8,7 +8,8 @@ class ProjectsController < ApplicationController
   end
   
   def show
-
+    @tasks = @project.tasks
+    @q = Task.search(params[:q])
   end
   
   def new
