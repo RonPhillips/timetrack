@@ -10,3 +10,7 @@ When /^I enter the tag search "([^"]*)"$/ do |value|
   fill_in("Tag Name contains", :with=>value)
 end   
 
+When /^I enter the state search "([^"]*)"$/ do |value|
+  fill_in("State Name contains", :with=>value)
+end   
+

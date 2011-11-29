@@ -1,9 +1,11 @@
 Given /^"([^\"]*)" has created a task for this project:$/ do |email, table|
   table.hashes.each do |attributes|
     tags = attributes.delete("tags")
-    attributes.merge!(:user => User.find_by_email!(email))
-    task = @project.tasks.create!(attributes)
+    state = attributes.delete("state")
+    task = @project.tasks.create!(attributes.merge!(:user => User.find_by_email!(email)))
+    task.state = State.find_or_create_by_name(state) if state
     task.tag!(tags) if tags
+    task.save
   end
 end
 

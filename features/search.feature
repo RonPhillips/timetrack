@@ -12,11 +12,11 @@ Feature: Searching
     And "user@taskee.com" can view the "Taskee" project
     And "user@taskee.com" can tag the "Taskee" project
     And "user@taskee.com" has created a task for this project:
-      | title | description | tags |
-      | Tag! | Hey! You're it! | iteration_1 |
+      | title | description | tags | state |
+      | Tag! | Hey! You're it! | iteration_1 | Open |
     And "user@taskee.com" has created a task for this project:
-      | title | description | tags |
-      | Tagged! | Hey! I'm it now! | iteration_2 |
+      | title | description | tags | state |
+      | Tagged! | Hey! I'm it now! | iteration_2 | Closed |
     Given I navigate to the "Taskee" project page
     
   Scenario: Finding by task
@@ -32,3 +32,11 @@ Feature: Searching
     #Then show me the page
     Then I should see "Tag!" under the "#tasks" CSS path
     And I should not see "Tagged!" under the "#tasks" CSS path
+    
+  Scenario: Finding by state
+    When I enter the state search "Open"
+    And I send the search request
+    #Then show me the page
+    Then I should see "Tag!" under the "#tasks" CSS path
+    And I should not see "Tagged!" under the "#tasks" CSS path
+
