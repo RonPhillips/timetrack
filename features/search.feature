@@ -39,4 +39,11 @@ Feature: Searching
     #Then show me the page
     Then I should see "Tag!" under the "#tasks" CSS path
     And I should not see "Tagged!" under the "#tasks" CSS path
+    
+  Scenario: Clicking a tag goes to search results
+    When I navigate to the "Tag!" task page
+    #Then show me the page
+    And I follow "iteration_1" under "#tags" CSS path
+    Then I should see "Tag!" under the "#tasks" CSS path
+    And I should not see "Tagged!" under the "#tasks" CSS path
 
