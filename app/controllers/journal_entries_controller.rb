@@ -16,6 +16,8 @@ class JournalEntriesController < ApplicationController
   def create
     @journal_entry = JournalEntry.new(params[:journal_entry])
     if @journal_entry.save
+      @journal_entry.tag!(params[:tags])
+      #@journal_entry.save
       flash[:notice] = "Journal Entry has been created."
       redirect_to @journal_entry
     else
@@ -29,6 +31,7 @@ class JournalEntriesController < ApplicationController
 
   def update
     if @journal_entry.update_attributes(params[:journal_entry])
+      @journal_entry.tag!(params[:tags])
       flash[:notice] = "Journal Entry has been updated."
       redirect_to @journal_entry
     else

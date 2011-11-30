@@ -1,14 +1,30 @@
-<span class='tag' id='tag-<%= tag.name.parameterize %>'>
-  <% if can?(:tag, @task.project) || current_user.admin? %>
+<% if @task%>
+  <span class='tag' id='tag-<%= tag.name.parameterize %>'>
+    <% if can?(:tag, @task.project) || current_user.admin? %>
 
-    <%= link_to "x", remove_task_tag_path(@task, tag),
-          :remote => true,
-          :method => :delete,
-          :id => "delete-#{tag.name.parameterize}" %>
-          
-  <% end %>
-  <%= link_to tag.name,
-search_project_tasks_path(@task.project,
-:q => {"tags_name_cont"=>tag.name}) %>
-</span>
+      <%= link_to "x", remove_task_tag_path(@task, tag),
+            :remote => true,
+            :method => :delete,
+            :id => "delete-#{tag.name.parameterize}" %>
+            
+    <% end %>
+    <%= link_to tag.name,
+  search_project_tasks_path(@task.project,
+  :q => {"tags_name_cont"=>tag.name}) %>
+  </span>
+<% else %>
+  <span class='tag' id='tag-<%= tag.name.parameterize %>'>
+    <%# if can?(:tag, @task.project) || current_user.admin? %>
 
+      <%= link_to "x", untag_journal_entry_tag_path(@journal_entry, tag),
+            #:remote => true,
+            :method => :delete,
+            :id => "delete-#{tag.name.parameterize}" %>
+            
+    <%# end %>
+    <%= tag.name %>
+    <%#= link_to tag.name,
+  search_project_tasks_path(@task.project,
+  :q => {"tags_name_cont"=>tag.name}) %>
+  </span>
+<%end%>

@@ -32,7 +32,7 @@ Feature: Creating Tasks
     Then I should see the task not "created" alert
     And I should see the task description length validation alert
 
-  Scenario: Creating a ticket with tags
+  Scenario: Creating a task with tags
     When I set the task "Title" to "Non-standards compliance"
     And I set the task "Description" to "My pages are ugly!"
     And I set the task "Tags" to "browser visual"

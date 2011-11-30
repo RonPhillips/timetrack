@@ -24,6 +24,14 @@ Timetracker::Application.routes.draw do
     end
   end
   
+  resources :journal_entries do
+    resources :tags do
+      member do
+        delete :untag
+      end
+    end
+  end
+  
   resources :tasks do
     resources :comments
     resources :tags do

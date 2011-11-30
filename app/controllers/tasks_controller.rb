@@ -47,6 +47,10 @@ class TasksController < ApplicationController
 
   def update
     if @task.update_attributes(params[:task])
+      if can?(:tag, @project) || current_user.admin?
+        @task.tag!(params[:tags])
+      end
+
       flash[:notice] = "Task has been updated."
       redirect_to [@project, @task]
     else
