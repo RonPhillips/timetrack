@@ -2,7 +2,12 @@ class JournalEntriesController < ApplicationController
   before_filter :find_journal_entry, :only=>[:show, :edit, :update, :destroy]
   
   def index
-    @journal_entries = JournalEntry.all
+    @q = JournalEntry.search(params[:q])
+    @journal_entries = @q.result(:distinct=>true)
+  end
+  def search
+    index
+    render :index
   end
   
   def show

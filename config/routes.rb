@@ -30,6 +30,9 @@ Timetracker::Application.routes.draw do
         delete :untag
       end
     end
+    collection do
+      get :search
+    end
   end
   
   resources :tasks do

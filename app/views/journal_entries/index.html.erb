@@ -1,7 +1,33 @@
 <h2>Journal Entries</h2>
-<ul>
-  <% @journal_entries.each do |journal_entry| %>
-    <li><%= link_to journal_entry.note, journal_entry %></li>
-  <% end %>
-</ul>
+<table id='entry_results'>
+  <thead>
+    <th>&nbsp;</th>
+    <%= search_form_for @q, :url=>search_journal_entries_path do |f| %>
+      <th><%= f.label :recorded_on_eq, "Recorded=" %>
+      <%= f.text_field :recorded_on_eq, :size=>10 %></th>
+        <th><%= f.label :duration_eq %>
+      <%= f.text_field :duration_eq, :size=>10 %></th>
+      <th>Start</th>
+        <th><%= f.label :note_cont %>
+      <%= f.text_field :note_cont, :size=>10 %></th>
+      <th>Activity ID</th>
+        <th><%= f.label :tags_name_cont, "Tag contains" %>
+      <%= f.text_field :tags_name_cont, :size=>10 %></th>
+       <th><%= f.submit %></th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% @journal_entries.each do |journal_entry| %>
+      <tr>
+        <td><%= link_to "View", journal_entry %></td>
+        <td><%= journal_entry.recorded_on %></td>
+        <td><%= journal_entry.duration %></td>
+        <td><%= journal_entry.starting_quarter%></td>
+        <td><%= journal_entry.note %></td>
+        <td><%= journal_entry.activity_id %></td>
+        <td><%= journal_entry.tagstring %></td>
+      </tr>   
+    <% end %>
+  </tbody>
+</table>
 <%= link_to "New Journal Entry", new_journal_entry_path %>

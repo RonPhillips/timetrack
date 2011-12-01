@@ -14,3 +14,7 @@ When /^I enter the state search "([^"]*)"$/ do |value|
   fill_in("State Name contains", :with=>value)
 end   
 
+When /^I enter the "([^"]*)" search "([^"]*)"$/ do |term, value|
+  fill_in(term, :with=>value)
+end   
+
