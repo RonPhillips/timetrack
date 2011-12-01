@@ -16,6 +16,7 @@ class Task < ActiveRecord::Base
   
   def tagstring
     out = tags.map{|tag|tag.name}
+    out.nil? ? '' : out.join(', ')
   end
   
 end

@@ -6,16 +6,24 @@ class JournalEntry < ActiveRecord::Base
   
   validates :duration, :presence=>true
   
-  def tag!(tags)
-    thetags = tags.split(" ").map do |name|
-      Tag.find_by_name(name)
+#  def tag!(tagnames)
+#    self.tags.clear
+#    tagnames.split(" ").each do |name|
+#      newtag = Tag.find_by_name(name)
+#      self.tags << newtag
+#    end
+#  end
+  def tag!(tagstring)
+    self.tags.clear
+    tagset = tagstring.split(" ").map do |tagname|
+      Tag.find_by_name(tagname)
     end
-    self.tags << thetags
+    self.tags << tagset
   end
-  
+
   def tagstring
     out = tags.map{|tag|tag.name}
-    out.join(", ")
+    out.join(" ")
   end
 
 end

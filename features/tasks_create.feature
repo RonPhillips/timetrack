@@ -17,7 +17,9 @@ Feature: Creating Tasks
     And I start to create a new task
 
   Scenario: Creating a task
-    And I enter the new task information
+    And I set the task "Title" to "Default Task Title"
+    And I set the task "Description" to "Default Task Description"
+    And I save the new task
     Then I should be shown the task "created" verification
     And I should see the new task created by "user@bogus.com"
   

@@ -1,4 +1,12 @@
+<% if @journal_entry%>
+<p>
+<%= label_tag :tags %>
+<%= text_field_tag :tags, params[:tags], :value=>@journal_entry.tagstring %>
+</p>
+<%else%>
 <p>
 <%= label_tag :tags %>
 <%= text_field_tag :tags, params[:tags] %>
 </p>
+<%end%>
+

@@ -62,10 +62,10 @@ end
 #  click_on("Create Journal entry")
 #end
 
-When /^I change the journal entry duration to ""$/ do
-  fill_in "Duration", :with => ""
-  click_on("Update Journal entry")
-end
+#When /^I change the journal entry duration to ""$/ do
+#  fill_in "Duration", :with => ""
+#  click_on("Update Journal entry")
+#end
 
 When /^I save the journal entry changes$/ do
   click_on("Update Journal entry")
@@ -82,10 +82,10 @@ When /^I set the journal entry "([^"]*)" to "([^"]*)"$/ do |attr_label, value|
   fill_in(attr_label, :with=>value)
 end   
 
-When /^I change the journal entry note to "([^"]*)"$/ do |note_content|
-  fill_in "Note", :with => note_content
-  click_on("Update Journal entry")
-end
+#When /^I change the journal entry note to "([^"]*)"$/ do |note_content|
+#  fill_in "Note", :with => note_content
+#  click_on("Update Journal entry")
+#end
 
 When /^I should be on the journal entry page with note "([^"]*)"$/ do |note_content|
   page.should have_content(note_content)
