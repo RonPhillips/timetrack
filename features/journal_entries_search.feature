@@ -34,6 +34,7 @@ Feature: Searching
     And I should see "Excellent!" under the "#entry_results" CSS path
     
   Scenario: Reporting results
+    #It works, but I don't know how to test it
     
   Scenario: Finding by date
     When I enter the "Recorded >=" search "2011-11-30"

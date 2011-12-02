@@ -1,6 +1,6 @@
 class JournalEntriesController < ApplicationController
   before_filter :find_journal_entry, :only=>[:show, :edit, :update, :destroy]
-  
+  respond_to :xml, :xls, :json
   def index
     @q = JournalEntry.search(params[:q])
     @journal_entries = @q.result(:distinct=>true)

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :find_states
-  respond_to :xml, :xls, :json
+  
   private
   
   def authorize_admin!
