@@ -1,10 +1,19 @@
 <h2>Journal Entries</h2>
+<%=@raw_search%><br />
+<%=link_to "Permalink", request.url.html_safe%> || 
+<% if @raw_search=='All'%>
+  <%=link_to "Report", "#{request.url.html_safe}?format=xls"%>
+<% else %>
+  <%=link_to "Report", "#{request.url.html_safe}&format=xls"%> ||
+  <%= link_to "View All", journal_entries_path %>
+<%end%>
 <table id='entry_results'>
   <thead>
     <th>&nbsp;</th>
-    <%= search_form_for @q, :url=>search_journal_entries_path do |f| %>
-      <th><%= f.label :recorded_on_eq, "Recorded=" %>
-      <%= f.text_field :recorded_on_eq, :size=>10 %></th>
+    <%= search_form_for @q, :url=>journal_entries_path do |f| %>
+      <th><%= f.label :recorded_on_gteq, "Recorded >=" %>
+      <%= f.text_field :recorded_on_gteq, :size=>10 %><%= f.label :recorded_on_lteq, "Recorded <=" %>
+      <%= f.text_field :recorded_on_lteq, :size=>10 %></th>
         <th><%= f.label :duration_eq %>
       <%= f.text_field :duration_eq, :size=>10 %></th>
       <th>Start</th>
@@ -31,3 +40,4 @@
   </tbody>
 </table>
 <%= link_to "New Journal Entry", new_journal_entry_path %>
+

@@ -16,7 +16,7 @@ Feature: Searching
       | 2011-11-30 | 5.25 | Excellent! | browser visual |
     And "ronp@bbking.com" has created a journal entry:
       | recorded_on | duration | note | tags |
-      | 2011-11-30 | 5.25 | Bogus | bogosity visual |
+      | 2011-12-05 | 5.25 | Bogus | bogosity visual |
     And I am on the journal entries page
     
   Scenario: Finding by journal entry note
@@ -33,12 +33,15 @@ Feature: Searching
     Then I should not see "Bogus" under the "#entry_results" CSS path
     And I should see "Excellent!" under the "#entry_results" CSS path
     
-#  Scenario: Finding by date
-#    When I enter the "Recorded=" search "2011-11-30"
-#    And I send the search request
-#    #Then show me the page
-#    Then I should not see "Bogus" under the "#entry_results" CSS path
-#    And I should see "Excellent!" under the "#entry_results" CSS path
+  Scenario: Reporting results
+    
+  Scenario: Finding by date
+    When I enter the "Recorded >=" search "2011-11-30"
+    And I enter the "Recorded <=" search "2011-12-01"
+    And I send the search request
+    #Then show me the page
+    Then I should not see "Bogus" under the "#entry_results" CSS path
+    And I should see "Excellent!" under the "#entry_results" CSS path
     
 #  Scenario: Clicking a tag goes to search results
 #    #Then show me the page

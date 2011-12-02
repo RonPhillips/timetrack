@@ -4,10 +4,18 @@ class JournalEntriesController < ApplicationController
   def index
     @q = JournalEntry.search(params[:q])
     @journal_entries = @q.result(:distinct=>true)
-  end
-  def search
-    index
-    render :index
+    params[:q].nil? ? @raw_search = 'All' : @raw_search=params[:q].to_s
+    respond_to do |format|
+      format.html
+      format.xml do
+        render :xml => @q.result(:distinct=>true).to_xml(:dasherize => false) 
+      end
+      format.xls do
+        render :layout => false
+        headers['Content-Disposition'] = "attachment; filename=\"journal_entries_search#{depunctuate(@raw_search).downcase}_#{fmt_file_date(Time.new)}.xls\""
+        headers['Cache-Control'] = ''
+      end
+    end
   end
   
   def show

@@ -19,5 +19,10 @@ module ApplicationHelper
     nil
   end
   
+  def fmt_ss_date(the_date=nil)
+    the_date.nil? ? out='' : out=the_date.strftime('%Y-%m-%dT00:00:00.000')
+    return out
+  end
+
 end
 
