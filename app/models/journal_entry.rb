@@ -5,6 +5,8 @@ class JournalEntry < ActiveRecord::Base
   has_and_belongs_to_many :tags
   
   validates :duration, :presence=>true
+  validates :activity, :presence=>true
+  validates :user, :presence=>true
   
 #  def tag!(tagnames)
 #    self.tags.clear

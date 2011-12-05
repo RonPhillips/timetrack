@@ -15,6 +15,12 @@ xml.Row do
     xml.Data "Note", 'ss:Type'=>'String'
   end
   xml.Cell do
+    xml.Data "Activity", 'ss:Type'=>'String'
+  end
+  xml.Cell do
+    xml.Data "User", 'ss:Type'=>'String'
+  end
+  xml.Cell do
     xml.Data "Tags", 'ss:Type'=>'String'
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129172949) do
+ActiveRecord::Schema.define(:version => 20111205153148) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -39,10 +39,12 @@ ActiveRecord::Schema.define(:version => 20111129172949) do
     t.string   "rfs"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "journal_entries", ["activity_id"], :name => "index_journal_entries_on_activity_id"
   add_index "journal_entries", ["task_id"], :name => "index_journal_entries_on_task_id"
+  add_index "journal_entries", ["user_id"], :name => "index_journal_entries_on_user_id"
 
   create_table "journal_entries_tags", :id => false, :force => true do |t|
     t.integer "journal_entry_id"

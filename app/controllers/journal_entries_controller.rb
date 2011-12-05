@@ -1,6 +1,10 @@
 class JournalEntriesController < ApplicationController
+
+  before_filter :authenticate_user!#, :only => [:index, :show]
   before_filter :find_journal_entry, :only=>[:show, :edit, :update, :destroy]
+  
   respond_to :xml, :xls, :json
+  
   def index
     @q = JournalEntry.search(params[:q])
     @journal_entries = @q.result(:distinct=>true)
@@ -24,6 +28,7 @@ class JournalEntriesController < ApplicationController
   
   def new
     @journal_entry=JournalEntry.new
+    @activities = Activity.all
   end
   
   def create
@@ -39,9 +44,11 @@ class JournalEntriesController < ApplicationController
   end
   
   def edit
+    @activities = Activity.all
   end
 
   def update
+    params[:journal_entry][:user_id]= current_user.id
     if @journal_entry.update_attributes(params[:journal_entry])
       @journal_entry.tag!(params[:tags]) #if params[:tags]
       flash[:notice] = "Journal Entry has been updated."

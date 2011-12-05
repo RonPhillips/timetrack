@@ -16,9 +16,15 @@
     <%= f.label :note %>
     <%= f.text_field :note %>
   </p>
+      <p>
+      <%= f.label :activity_id %>
+      <%= f.select :activity_id, @activities.map { |s| [s.name, s.id] },
+              :selected => @journal_entry.activity_id %>
+    </p>
+
   <p>
-    <%= f.label :activity_id %>
-    <%= f.text_field :activity_id %>
+    <%#= f.label :activity_id %>
+    <%#= f.text_field :activity_id %>
   </p>
   <%= render 'tags/form' %>
   <%= f.submit %>

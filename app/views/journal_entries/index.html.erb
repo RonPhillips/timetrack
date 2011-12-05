@@ -1,5 +1,5 @@
 <h2>Journal Entries</h2>
-<%=@raw_search%><br />
+<%#=@raw_search%><br />
 <%=link_to "Permalink", request.url.html_safe%> || 
 <% if @raw_search=='All'%>
   <%=link_to "Report", "#{request.url.html_safe}?format=xls"%>
@@ -7,23 +7,30 @@
   <%=link_to "Report", "#{request.url.html_safe}&format=xls"%> ||
   <%= link_to "View All", journal_entries_path %>
 <%end%>
-<table id='entry_results'>
+<table id='entry_results' border='1'>
   <thead>
+    <tr>
     <th>&nbsp;</th>
     <%= search_form_for @q, :url=>journal_entries_path do |f| %>
       <th><%= f.label :recorded_on_gteq, "Recorded >=" %>
-      <%= f.text_field :recorded_on_gteq, :size=>10 %><%= f.label :recorded_on_lteq, "Recorded <=" %>
+      <%= f.text_field :recorded_on_gteq, :size=>10 %><br />
+      <%= f.label :recorded_on_lteq, "Recorded <=" %>
       <%= f.text_field :recorded_on_lteq, :size=>10 %></th>
-        <th><%= f.label :duration_eq %>
+      
+      <th><%= f.label :duration_eq %>
       <%= f.text_field :duration_eq, :size=>10 %></th>
       <th>Start</th>
-        <th><%= f.label :note_cont %>
+        <th><%= f.label :note_cont, "Note" %>
       <%= f.text_field :note_cont, :size=>10 %></th>
-      <th>Activity ID</th>
-        <th><%= f.label :tags_name_cont, "Tag contains" %>
+      <th><%= f.label :activity_name_cont, "Activity" %>
+      <%= f.text_field :activity_name_cont, :size=>10 %></th>
+        <th><%= f.label :tags_name_cont, "Tags" %>
       <%= f.text_field :tags_name_cont, :size=>10 %></th>
+        <th><%= f.label :user_name_cont, "User" %>
+      <%= f.text_field :user_email_cont, :size=>10 %></th>
        <th><%= f.submit %></th>
     <% end %>
+    </tr>
   </thead>
   <tbody>
     <% @journal_entries.each do |journal_entry| %>
@@ -33,11 +40,18 @@
         <td><%= journal_entry.duration %></td>
         <td><%= journal_entry.starting_quarter%></td>
         <td><%= journal_entry.note %></td>
-        <td><%= journal_entry.activity_id %></td>
+        <td><%= journal_entry.activity.name %></td>
         <td><%= journal_entry.tagstring %></td>
+        <td><%= journal_entry.user.email %></td>
       </tr>   
     <% end %>
   </tbody>
 </table>
 <%= link_to "New Journal Entry", new_journal_entry_path %>
+<script>
+$(document).ready(function(){
+  $("#q_recorded_on_gteq").datepicker({dateFormat:'yy-mm-dd'});
+  $("#q_recorded_on_lteq").datepicker({dateFormat:'yy-mm-dd'});
+});
+</script>
 

@@ -4,6 +4,7 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require_tree . 
+ *= require vendor
 */
 * {
   padding: 0px;
@@ -62,15 +63,6 @@ input[type=file] {
   background: #FF3444;
 }
 
-ul#tickets {
-  padding: 15px;
-  list-style-type: none;
-}
-
-ul#tickets li {
-  margin-bottom: 10px;
-}
-
 #permissions {
   border: 1px solid #789B2F;
 }
@@ -94,40 +86,6 @@ ul#tickets li {
   background: #C2EC4B;
 }
 
-ul#tickets .state {
-  padding-right: 5px;
-/*  margin-right: 4em;*/
-}
-
-ul#tickets .state {
-  float: left;
-}
-
-#ticket, .comment {
-  margin: 15px 0 15px 0;
-  padding: 15px;
-  background: #eaeaea;
-  border: 1px solid #e0e0e0;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-}
-
-#ticket a {
-  color: #67A300;
-}
-
-#ticket menu {
-  font-size: 75%;
-}
-
-menu, #ticket .state, .states {
-  float: right;
-}
-
-#ticket section {
-  clear: both;
-}
-
 .state {
   display: inline;
   width: 4em;
@@ -140,35 +98,4 @@ menu, #ticket .state, .states {
   padding: 5px;
 }
 
-#ticket #tags {
-  margin-top: 20px;
-}
 
-#ticket .tag {
-  background: #232323;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  color: white;
-  padding: 8px;
-}
-
-#ticket .tag a {
-  color: white;
-}
-
-#ticket .tag .delete {
-  font-size: 125%;
-  text-decoration: none;
-}
-
-.new_comment { 
-  padding: 15px;
-  background: #eaeaea;
-  color: black;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-}
-
-.comment, .new_comment {
-  width: 75%;
-}

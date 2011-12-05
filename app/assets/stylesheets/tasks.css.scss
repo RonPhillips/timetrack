@@ -1,3 +1,68 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul#tasks .state {
+  padding-right: 5px;
+/*  margin-right: 4em;*/
+}
+
+ul#tasks .state {
+  float: left;
+}
+
+#task, .comment {
+  margin: 15px 0 15px 0;
+  padding: 15px;
+  background: #eaeaea;
+  border: 1px solid #e0e0e0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#task a {
+  color: #67A300;
+}
+
+#task menu {
+  font-size: 75%;
+}
+
+menu, #task .state, .states {
+  float: right;
+}
+
+#task section {
+  clear: both;
+}
+
+#task #tags {
+  margin-top: 20px;
+}
+
+#task .tag {
+  background: #232323;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  color: white;
+  padding: 8px;
+}
+
+#task .tag a {
+  color: white;
+}
+
+#task .tag .delete {
+  font-size: 125%;
+  text-decoration: none;
+}
+
+ul#tasks {
+  padding: 15px;
+  list-style-type: none;
+}
+
+ul#tasks li {
+  margin-bottom: 10px;
+}
+

@@ -12,7 +12,7 @@ xml.Workbook(workbook_xmlns) do
   xml << render(:partial => 'reports/styles')
   
   xml.DocumentProperties({'xmlns' => "urn:schemas-microsoft-com:office:office"}) do
-    xml.Author current_user.employee.id unless (!current_user)
+    xml.Author current_user.email unless (!current_user)
     xml.Created Time.now
     xml.Company 'Summit County Engineer'
     xml.Title request.url.html_safe

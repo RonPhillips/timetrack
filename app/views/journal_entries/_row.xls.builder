@@ -16,6 +16,12 @@ xml.Row do
     xml.Data journal_entry.note, 'ss:Type'=>'String'
   end
   xml.Cell do
+    xml.Data journal_entry.activity.name, 'ss:Type'=>'String'
+  end
+  xml.Cell do
+    xml.Data journal_entry.user.email, 'ss:Type'=>'String'
+  end
+  xml.Cell do
     xml.Data journal_entry.tagstring, 'ss:Type'=>'String'
   end
 end
