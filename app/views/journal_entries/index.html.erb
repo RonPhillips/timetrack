@@ -16,12 +16,13 @@
       <%= f.text_field :recorded_on_gteq, :size=>10 %><br />
       <%= f.label :recorded_on_lteq, "Recorded <=" %>
       <%= f.text_field :recorded_on_lteq, :size=>10 %></th>
-      
       <th><%= f.label :duration_eq %>
       <%= f.text_field :duration_eq, :size=>10 %></th>
       <th>Start</th>
         <th><%= f.label :note_cont, "Note" %>
       <%= f.text_field :note_cont, :size=>10 %></th>
+      <th><%= f.label :activity_identifier_cont, "Activity Ident"%>
+      <%= f.text_field :activity_identifier_cont, :size=>10%></th>
       <th><%= f.label :activity_name_cont, "Activity" %>
       <%= f.text_field :activity_name_cont, :size=>10 %></th>
         <th><%= f.label :tags_name_cont, "Tags" %>
@@ -40,6 +41,7 @@
         <td><%= journal_entry.duration %></td>
         <td><%= journal_entry.starting_quarter%></td>
         <td><%= journal_entry.note %></td>
+        <td><%= journal_entry.activity.identifier %></td>
         <td><%= journal_entry.activity.name %></td>
         <td><%= journal_entry.tagstring %></td>
         <td><%= journal_entry.user.email %></td>

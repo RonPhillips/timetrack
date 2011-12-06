@@ -16,16 +16,17 @@
     <%= f.label :note %>
     <%= f.text_field :note %>
   </p>
-      <p>
-      <%= f.label :activity_id %>
-      <%= f.select :activity_id, @activities.map { |s| [s.name, s.id] },
-              :selected => @journal_entry.activity_id %>
-    </p>
+  <p>
+    <%= label_tag :activity_name, 'Activity' %>
+    <%= f.hidden_field :activity_id %>
+    <span id='activity_name' ><%=@journal_entry.activity.label %></span><br />
+    Change to: <%= text_field_tag :activity_autoselect %>
+  </p>
 
   <p>
-    <%#= f.label :activity_id %>
-    <%#= f.text_field :activity_id %>
+    <%= label_tag :tags %>
+    <%= text_field_tag :tags %>
   </p>
-  <%= render 'tags/form' %>
+
   <%= f.submit %>
 <% end %>

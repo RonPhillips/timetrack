@@ -1,2 +1,8 @@
 <h2>New Journal Entry</h2>
-<%= render 'form'%>
+<%= render 'form', :locals=>{:activities=>@activities}%>
+<script>
+$(document).ready(function(){
+  $("#tags").tokenInput('/tags.json/',{queryParam:'q[name_cont]'});
+});
+</script>
+

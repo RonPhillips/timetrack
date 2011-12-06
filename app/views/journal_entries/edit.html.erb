@@ -1,2 +1,21 @@
 <h2>Edit Journal Entry</h2>
-<%= render "form" %>
+<%= render "form", :locals=>{:activities=>@activities} %>
+
+<script>
+$(document).ready(function(){
+  $("#tags").tokenInput('/tags.json/',{queryParam:'q[name_cont]', prePopulate:<%=@tagsjson.html_safe%>});
+ var activity_list = eval(<%= Activity::labels.to_json.html_safe%>) 	
+
+	$( "#activity_autoselect" ).autocomplete({
+		source: activity_list,
+		minLength: 2,
+		select: function( event, ui ) {
+				//alert("Selected: " + ui.item.label + " aka " + ui.item.id);
+				$('#journal_entry_activity_id').val(ui.item.id);
+				$('#activity_name').text(ui.item.label);
+  	}
+	});
+
+});
+</script>
+

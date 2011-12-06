@@ -8,19 +8,11 @@ class JournalEntry < ActiveRecord::Base
   validates :activity, :presence=>true
   validates :user, :presence=>true
   
-#  def tag!(tagnames)
-#    self.tags.clear
-#    tagnames.split(" ").each do |name|
-#      newtag = Tag.find_by_name(name)
-#      self.tags << newtag
-#    end
-#  end
-  def tag!(tagstring)
+  def tag!(tagsparam)
     self.tags.clear
-    tagset = tagstring.split(" ").map do |tagname|
-      Tag.find_by_name(tagname)
+    Tag.find(tagsparam.split(',')).each do |newtag|
+      self.tags << newtag
     end
-    self.tags << tagset
   end
 
   def tagstring

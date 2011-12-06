@@ -11,13 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111205153148) do
+ActiveRecord::Schema.define(:version => 20111206181421) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "identifier"
   end
+
+  add_index "activities", ["identifier"], :name => "index_activities_on_identifier"
 
   create_table "comments", :force => true do |t|
     t.text     "text"

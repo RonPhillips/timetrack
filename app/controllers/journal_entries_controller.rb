@@ -32,6 +32,7 @@ class JournalEntriesController < ApplicationController
   end
   
   def create
+    params[:journal_entry][:user_id]= current_user.id
     @journal_entry = JournalEntry.new(params[:journal_entry])
     if @journal_entry.save
       @journal_entry.tag!(params[:tags]) #if params[:tags]
@@ -45,6 +46,7 @@ class JournalEntriesController < ApplicationController
   
   def edit
     @activities = Activity.all
+    @tagsjson = @journal_entry.tags.to_json
   end
 
   def update

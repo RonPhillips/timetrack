@@ -43,6 +43,7 @@ Timetracker::Application.routes.draw do
    
   resources :activities
   resources :journal_entries
+  resources :tags
   
   namespace :admin do
     root :to => "base#index"
@@ -54,6 +55,8 @@ Timetracker::Application.routes.draw do
         get :make_default
       end
     end
+    resources :tags
+    resources :activities
   end
   
   put '/admin/users/:user_id/permissions', :to => 'admin/permissions#update',

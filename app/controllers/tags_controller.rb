@@ -1,5 +1,23 @@
 class TagsController < ApplicationController
 
+  respond_to :xml, :xls, :json
+  
+  def index
+    @q = Tag.search(params[:q])
+    @tags = @q.result(:distinct=>true)
+    params[:q].nil? ? @raw_search = 'All' : @raw_search=params[:q].to_s
+    respond_to do |format|
+      format.html
+      format.xml do
+        render :xml => @q.result(:distinct=>true).to_xml(:dasherize => false) 
+      end
+      format.json do
+        render :json=>@q.result(:distinct=>true).to_json, :layout => false
+      end
+    end
+  end
+
+
   def remove
     @task = Task.find(params[:task_id])
     if can?(:tag, @task.project) || current_user.admin?
